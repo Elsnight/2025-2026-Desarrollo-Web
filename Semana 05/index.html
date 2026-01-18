@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galería Interactiva - Semana 05</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🖼️ Galería de Imágenes Interactiva</h1>
+        <p>Agrega, selecciona y elimina imágenes dinámicamente</p>
+      </header>
+
+      <section class="controls">
+        <div class="input-group">
+          <input
+            type="url"
+            id="imageUrl"
+            placeholder="Ingresa la URL de una imagen"
+            aria-label="URL de imagen"
+          />
+          <button id="addImageBtn" class="btn btn-add">
+            ➕ Agregar Imagen
+          </button>
+        </div>
+        <button id="deleteImageBtn" class="btn btn-delete" disabled>
+          🗑️ Eliminar Imagen Seleccionada
+        </button>
+      </section>
+
+      <section class="gallery-container">
+        <div id="gallery" class="gallery">
+          <!-- Las imágenes se agregarán aquí dinámicamente -->
+        </div>
+        <div id="emptyState" class="empty-state">
+          <p>📷 No hay imágenes en la galería</p>
+          <p class="hint">Agrega una imagen usando el formulario de arriba</p>
+        </div>
+      </section>
+
+      <footer>
+        <p>Desarrollado con ❤️ para el curso de Desarrollo Web</p>
+        <p class="tip">
+          💡 <strong>Consejo:</strong> Presiona <kbd>Delete</kbd> o
+          <kbd>Supr</kbd> para eliminar la imagen seleccionada
+        </p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
