@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario con Validación Dinámica</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-container">
+        <h1>Formulario de Registro</h1>
+        <p class="subtitle">Completa todos los campos para registrarte</p>
+
+        <form id="registroForm" novalidate>
+          <!-- Campo Nombre -->
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder="Ingresa tu nombre"
+              required
+            />
+            <span class="error-message" id="errorNombre"></span>
+            <span class="success-message" id="successNombre"></span>
+          </div>
+
+          <!-- Campo Email -->
+          <div class="form-group">
+            <label for="email">Correo Electrónico</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="ejemplo@correo.com"
+              required
+            />
+            <span class="error-message" id="errorEmail"></span>
+            <span class="success-message" id="successEmail"></span>
+          </div>
+
+          <!-- Campo Contraseña -->
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <div class="password-input-wrapper">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Mínimo 8 caracteres"
+                required
+              />
+              <button type="button" id="togglePassword" class="toggle-password">
+                👁️
+              </button>
+            </div>
+            <div class="password-requirements">
+              <p class="requirement" id="req-length">
+                <span class="icon">✗</span> Mínimo 8 caracteres
+              </p>
+              <p class="requirement" id="req-number">
+                <span class="icon">✗</span> Al menos un número
+              </p>
+              <p class="requirement" id="req-special">
+                <span class="icon">✗</span> Al menos un carácter especial
+                (!@#$%^&*)
+              </p>
+            </div>
+            <span class="error-message" id="errorPassword"></span>
+          </div>
+
+          <!-- Campo Confirmación Contraseña -->
+          <div class="form-group">
+            <label for="confirmPassword">Confirmar Contraseña</label>
+            <div class="password-input-wrapper">
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Repite tu contraseña"
+                required
+              />
+              <button
+                type="button"
+                id="toggleConfirmPassword"
+                class="toggle-password"
+              >
+                👁️
+              </button>
+            </div>
+            <span class="error-message" id="errorConfirmPassword"></span>
+            <span class="success-message" id="successConfirmPassword"></span>
+          </div>
+
+          <!-- Campo Edad -->
+          <div class="form-group">
+            <label for="edad">Edad</label>
+            <input
+              type="number"
+              id="edad"
+              name="edad"
+              placeholder="Debes ser mayor de 18 años"
+              min="18"
+              required
+            />
+            <span class="error-message" id="errorEdad"></span>
+            <span class="success-message" id="successEdad"></span>
+          </div>
+
+          <!-- Botones -->
+          <div class="button-group">
+            <button
+              type="submit"
+              id="submitBtn"
+              class="btn btn-primary"
+              disabled
+            >
+              Registrarse
+            </button>
+            <button type="reset" id="resetBtn" class="btn btn-secondary">
+              Limpiar Formulario
+            </button>
+          </div>
+
+          <!-- Mensaje de éxito -->
+          <div class="success-container" id="successContainer"></div>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
