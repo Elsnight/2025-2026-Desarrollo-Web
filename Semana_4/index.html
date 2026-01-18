@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desarrollo Web Moderno - Semana 4</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Estilos Personalizados -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- NAVBAR RESPONSIVA -->
+    <nav
+      class="navbar navbar-expand-md navbar-dark bg-dark sticky-top"
+      style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="#inicio">🚀 WebDev 2025</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#inicio">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#servicios">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#formulario">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#footer">Acerca de</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ENCABEZADO PRINCIPAL -->
+    <header id="inicio" class="hero-section">
+      <div class="container text-center py-5">
+        <h1 class="display-3 fw-bold mb-3 animate-title">
+          Bienvenido a Desarrollo Web Moderno
+        </h1>
+        <p class="lead mb-4">
+          Aprende Bootstrap 5, CSS3 avanzado y crea sitios responsivos
+          profesionales
+        </p>
+        <button class="btn btn-primary btn-lg me-2 animate-btn">
+          Comenzar Ahora
+        </button>
+        <button class="btn btn-outline-light btn-lg animate-btn-secondary">
+          Más Información
+        </button>
+      </div>
+    </header>
+
+    <!-- SECCIÓN PRINCIPAL CON GRID -->
+    <section id="servicios" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center mb-5 fw-bold">Nuestros Servicios</h2>
+
+        <div class="row g-4">
+          <!-- Card 1 -->
+          <div class="col-md-4 col-sm-12">
+            <div class="card h-100 card-hover">
+              <img
+                src="assets/img/DISENO-WEB.jpg"
+                class="card-img-top img-fluid"
+                alt="Diseño Web"
+              />
+              <div class="card-body">
+                <h3 class="card-title">💻 Diseño Web</h3>
+                <p class="card-text">
+                  Diseños modernos, limpios y atractivos que cautivan a tus
+                  visitantes. Utilizamos las últimas tendencias en diseño UX/UI.
+                </p>
+              </div>
+              <div class="card-footer bg-white border-0">
+                <button class="btn btn-sm btn-primary">Más Detalles</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="col-md-4 col-sm-12">
+            <div class="card h-100 card-hover">
+              <img
+                src="assets/img/responsivo.png"
+                class="card-img-top img-fluid"
+                alt="Responsive Design"
+              />
+              <div class="card-body">
+                <h3 class="card-title">📱 Diseño Responsivo</h3>
+                <p class="card-text">
+                  Tus sitios se verán perfectamente en cualquier dispositivo:
+                  móvil, tablet o escritorio. Adaptabilidad garantizada.
+                </p>
+              </div>
+              <div class="card-footer bg-white border-0">
+                <button class="btn btn-sm btn-success">Más Detalles</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="col-md-4 col-sm-12">
+            <div class="card h-100 card-hover">
+              <img
+                src="assets/img/Animaciones.png"
+                class="card-img-top img-fluid"
+                alt="Animaciones"
+              />
+              <div class="card-body">
+                <h3 class="card-title">✨ Animaciones</h3>
+                <p class="card-text">
+                  Transiciones suaves y animaciones cautivadoras que mejoran la
+                  experiencia del usuario de forma exponencial.
+                </p>
+              </div>
+              <div class="card-footer bg-white border-0">
+                <button class="btn btn-sm btn-danger">Más Detalles</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DE FUNCIONALIDADES INTERACTIVAS -->
+    <section class="py-5 bg-white">
+      <div class="container">
+        <h2 class="text-center mb-5 fw-bold">Características Interactivas</h2>
+
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <h3 class="mb-4">¿Qué hace especial a Bootstrap?</h3>
+            <p class="mb-3">
+              Bootstrap es el framework CSS más popular del mundo, utilizado por
+              millones de desarrolladores. Proporciona componentes predefinidos
+              y un sistema de grid flexible.
+            </p>
+
+            <!-- Collapse Button -->
+            <button
+              class="btn btn-info mb-3"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#detalles"
+            >
+              📖 Ver más Detalles
+            </button>
+
+            <div class="collapse" id="detalles">
+              <div class="alert alert-info">
+                <h5>Ventajas principales:</h5>
+                <ul>
+                  <li>Sistema de Grid de 12 columnas</li>
+                  <li>
+                    Componentes preestilizados (navbar, cards, modals, etc.)
+                  </li>
+                  <li>Completamente responsivo</li>
+                  <li>Personalizable con CSS</li>
+                  <li>Documentación completa</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <img
+              src="https://via.placeholder.com/400x300/6f42c1/ffffff?text=Bootstrap+Framework"
+              class="img-fluid rounded-3 shadow-lg"
+              alt="Bootstrap"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULARIO RESPONSIVO -->
+    <section id="formulario" class="py-5 bg-light">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <h2 class="text-center mb-4 fw-bold">Ponte en Contacto</h2>
+            <form class="form-contact">
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre Completo</label>
+                <input
+                  type="text"
+                  class="form-control form-input"
+                  id="nombre"
+                  placeholder="Tu nombre"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input
+                  type="email"
+                  class="form-control form-input"
+                  id="email"
+                  placeholder="tu@email.com"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="asunto" class="form-label">Asunto</label>
+                <input
+                  type="text"
+                  class="form-control form-input"
+                  id="asunto"
+                  placeholder="¿En qué podemos ayudarte?"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="mensaje" class="form-label">Mensaje</label>
+                <textarea
+                  class="form-control form-input"
+                  id="mensaje"
+                  rows="5"
+                  placeholder="Escribe tu mensaje aquí..."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="mb-3 form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="terminos"
+                  required
+                />
+                <label class="form-check-label" for="terminos">
+                  Acepto los términos y condiciones
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-enviar w-100">
+                ✉️ Enviar Mensaje
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DE TESTIMONIOS -->
+    <section class="py-5 bg-dark text-white">
+      <div class="container">
+        <h2 class="text-center mb-5 fw-bold">
+          Lo que Dicen Nuestros Estudiantes
+        </h2>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card bg-dark border-primary">
+              <div class="card-body">
+                <p class="card-text">
+                  "¡Excelente curso! Aprendí mucho sobre Bootstrap y CSS
+                  moderno. Los ejemplos son muy prácticos."
+                </p>
+                <p class="fw-bold">⭐⭐⭐⭐⭐ Juan Pérez</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card bg-dark border-success">
+              <div class="card-body">
+                <p class="card-text">
+                  "Me ayudó a entender Flexbox y Grid. Ahora puedo crear diseños
+                  responsivos con confianza."
+                </p>
+                <p class="fw-bold">⭐⭐⭐⭐⭐ María López</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card bg-dark border-danger">
+              <div class="card-body">
+                <p class="card-text">
+                  "Las animaciones y transiciones hacen que mis proyectos se
+                  vean profesionales. Muy recomendado."
+                </p>
+                <p class="fw-bold">⭐⭐⭐⭐⭐ Carlos García</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer" class="bg-dark text-white text-center py-4">
+      <div class="container">
+        <h3 class="mb-3">Desarrollo Web Moderno 2025-2026</h3>
+        <div class="mb-3">
+          <a href="#" class="text-white me-3">Facebook</a>
+          <a href="#" class="text-white me-3">Twitter</a>
+          <a href="#" class="text-white me-3">Instagram</a>
+          <a href="#" class="text-white">LinkedIn</a>
+        </div>
+        <p class="mb-0">
+          &copy; 2025 Universidad Estatal Amazónica. Todos los derechos
+          reservados.
+        </p>
+        <p class="small mt-2">Hecho con ❤️ usando Bootstrap 5 y CSS3</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script personalizado -->
+    <script src="script.js"></script>
+  </body>
+</html>

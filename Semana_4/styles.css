@@ -1,0 +1,672 @@
+/* ============================================
+   ESTILOS PERSONALIZADOS - Semana 4
+   Bootstrap 5 Personalizado
+   ============================================ */
+
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --info-color: #17a2b8;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+  --border-radius: 12px;
+  --transition-speed: 0.3s;
+}
+
+/* ============================================
+   TIPOGRAFÍA Y ESTILOS GENERALES
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============================================
+   NAVBAR PERSONALIZADA
+   ============================================ */
+
+.navbar {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+  transition: all var(--transition-speed) ease;
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  color: #fff !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: transform var(--transition-speed) ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+.navbar-nav .nav-link {
+  color: #ddd !important;
+  margin: 0 10px;
+  position: relative;
+  transition: color var(--transition-speed) ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #fff !important;
+}
+
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 50%;
+  background-color: var(--primary-color);
+  transition: all var(--transition-speed) ease;
+  transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+  width: 100%;
+}
+
+/* ============================================
+   SECCIÓN HERO
+   ============================================ */
+
+.hero-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,144C960,149,1056,139,1152,128C1248,117,1344,107,1392,101.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>')
+    no-repeat bottom;
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.animate-title {
+  animation: slideInDown 1s ease forwards;
+  opacity: 0;
+}
+
+.animate-btn,
+.animate-btn-secondary {
+  animation: slideInUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.animate-btn {
+  animation-delay: 0.3s;
+}
+
+.animate-btn-secondary {
+  animation-delay: 0.5s;
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   BOTONES PERSONALIZADOS
+   ============================================ */
+
+.btn {
+  border-radius: var(--border-radius);
+  padding: 10px 30px;
+  font-weight: 600;
+  transition: all var(--transition-speed) ease;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 123, 255, 0.3);
+}
+
+.btn-success {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(40, 167, 69, 0.3);
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(220, 53, 69, 0.3);
+}
+
+.btn-outline-light {
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-outline-light:hover {
+  background-color: white;
+  color: #667eea;
+  transform: translateY(-3px);
+}
+
+/* ============================================
+   CARDS PERSONALIZADAS
+   ============================================ */
+
+.card {
+  border: none;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: all var(--transition-speed) ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-hover {
+  cursor: pointer;
+}
+
+.card-hover:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.card-hover:hover .card-img-top {
+  transform: scale(1.1);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  transition: transform var(--transition-speed) ease;
+}
+
+.card-title {
+  color: var(--dark-color);
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.card-text {
+  color: #666;
+  line-height: 1.8;
+}
+
+.card-footer {
+  background-color: transparent !important;
+  border-top: 1px solid #eee;
+  padding: 15px;
+}
+
+/* ============================================
+   FORMULARIO PERSONALIZADO
+   ============================================ */
+
+.form-contact {
+  background-color: white;
+  padding: 40px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--dark-color);
+  margin-bottom: 10px;
+}
+
+.form-input {
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px 15px;
+  font-size: 1rem;
+  transition: all var(--transition-speed) ease;
+}
+
+.form-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  background-color: #f9f9f9;
+}
+
+.form-input::placeholder {
+  color: #aaa;
+}
+
+.form-check-input {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  transition: all var(--transition-speed) ease;
+}
+
+.form-check-input:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-enviar {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, var(--primary-color), #0056b3);
+  border: none;
+  transition: all var(--transition-speed) ease;
+}
+
+.btn-enviar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 123, 255, 0.4);
+  background: linear-gradient(135deg, #0056b3, var(--primary-color));
+}
+
+.btn-enviar:active {
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   SECCIONES
+   ============================================ */
+
+section {
+  scroll-behavior: smooth;
+}
+
+section h2 {
+  color: var(--dark-color);
+  font-weight: 800;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 15px;
+}
+
+section h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), #764ba2);
+  border-radius: 2px;
+}
+
+.bg-light {
+  background-color: #f8f9fa !important;
+}
+
+.bg-dark {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+}
+
+/* ============================================
+   COLLAPSE / ACCORDION
+   ============================================ */
+
+.btn-info {
+  background-color: var(--info-color);
+  border: none;
+  color: white;
+  transition: all var(--transition-speed) ease;
+}
+
+.btn-info:hover {
+  background-color: #138496;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(23, 162, 184, 0.3);
+}
+
+.collapse {
+  animation: fadeIn var(--transition-speed) ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.alert-info {
+  background-color: rgba(23, 162, 184, 0.1);
+  border: 2px solid var(--info-color);
+  border-radius: var(--border-radius);
+  color: #0c5460;
+}
+
+.alert-info h5 {
+  color: var(--info-color);
+  font-weight: 700;
+}
+
+.alert-info ul {
+  margin-bottom: 0;
+  padding-left: 20px;
+}
+
+.alert-info li {
+  margin-bottom: 8px;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-top: 3px solid var(--primary-color);
+}
+
+footer h3 {
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+footer a {
+  text-decoration: none;
+  transition: all var(--transition-speed) ease;
+  font-weight: 500;
+}
+
+footer a:hover {
+  color: var(--primary-color) !important;
+  transform: translateY(-2px);
+}
+
+footer p {
+  color: #aaa;
+}
+
+/* ============================================
+   MEDIA QUERIES - RESPONSIVE
+   ============================================ */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 400px;
+  }
+
+  .animate-title {
+    font-size: 2rem;
+  }
+
+  .btn {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+
+  .form-contact {
+    padding: 30px 20px;
+  }
+
+  section h2 {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
+}
+
+/* Móviles */
+@media (max-width: 576px) {
+  .hero-section {
+    min-height: 350px;
+    padding: 20px;
+  }
+
+  .hero-section h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  .hero-section p {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    padding: 8px 15px;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+
+  .form-contact {
+    padding: 20px 15px;
+  }
+
+  .card-img-top {
+    height: 150px;
+  }
+
+  section h2 {
+    font-size: 1.5rem;
+  }
+
+  .row {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  .col-md-4,
+  .col-md-6 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  footer {
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra pequeño */
+@media (max-width: 360px) {
+  .hero-section h1 {
+    font-size: 1.4rem;
+  }
+
+  .btn {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+
+  .form-contact {
+    padding: 15px 10px;
+  }
+
+  .form-label {
+    font-size: 0.9rem;
+  }
+
+  .form-input {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================================
+   TRANSICIONES Y ANIMACIONES AVANZADAS
+   ============================================ */
+
+/* Scroll Animation */
+.fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pulse Animation */
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Smooth Transitions */
+a,
+button,
+input,
+textarea {
+  transition: all var(--transition-speed) ease;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.shadow-lg {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
+}
+
+.rounded-3 {
+  border-radius: 20px !important;
+}
+
+.fw-bold {
+  font-weight: 700 !important;
+}
+
+.text-white {
+  color: white !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb-5 {
+  margin-bottom: 3rem !important;
+}
+
+.py-5 {
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+}
+
+.py-4 {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
+/* ============================================
+   SCROLL BAR PERSONALIZADO
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0056b3;
+}
