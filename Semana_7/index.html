@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Semana 7 - Lista de productos</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 2rem;
+        line-height: 1.5;
+      }
+      h1 {
+        margin-bottom: 0.5rem;
+      }
+      #add-product {
+        margin: 1rem 0;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        max-width: 320px;
+      }
+      label {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        font-size: 0.95rem;
+      }
+      input {
+        padding: 0.35rem 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      ul {
+        padding-left: 1.25rem;
+      }
+      li {
+        margin-bottom: 0.75rem;
+      }
+      .name {
+        font-weight: 700;
+      }
+      .price {
+        color: #0a7;
+      }
+      .description {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Productos</h1>
+    <button id="add-product" type="button">Agregar producto</button>
+    <form id="product-form" aria-label="Agregar nuevo producto">
+      <label>
+        Nombre
+        <input
+          id="name-input"
+          name="name"
+          type="text"
+          placeholder="Ej. Cuaderno A5"
+          required
+        />
+      </label>
+      <label>
+        Precio
+        <input
+          id="price-input"
+          name="price"
+          type="number"
+          step="0.01"
+          min="0"
+          placeholder="Ej. 9.99"
+          required
+        />
+      </label>
+      <label>
+        Descripción
+        <input
+          id="description-input"
+          name="description"
+          type="text"
+          placeholder="Breve detalle"
+          required
+        />
+      </label>
+      <button type="submit">Guardar producto</button>
+    </form>
+    <ul id="product-list" aria-live="polite"></ul>
+
+    <script src="script.js"></script>
+  </body>
+</html>
