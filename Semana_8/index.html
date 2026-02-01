@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fausto's Coffee - Café Amazónico de Calidad</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome para iconos -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Encabezado con Navegación -->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <i class="fas fa-coffee"></i> Fausto's Coffee
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="#inicio">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#productos">Productos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contacto">Contacto</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Sección Principal -->
+    <main class="container my-5">
+      <!-- Título Principal -->
+      <section id="inicio" class="text-center mb-5">
+        <h1 class="display-4 custom-title">Bienvenido a Fausto's Coffee</h1>
+        <p class="lead">Café Amazónico Premium de la Región de Pastaza</p>
+        <p class="text-muted">Cultivado con pasión, servido con excelencia</p>
+        <button id="btnAlerta" class="btn btn-warning btn-lg mt-3">
+          <i class="fas fa-mug-hot"></i> Descubre Nuestro Café
+        </button>
+      </section>
+
+      <!-- Carrusel de Imágenes -->
+      <section class="mb-5">
+        <h2 class="text-center mb-4">Galería de Imágenes</h2>
+        <div
+          id="carouselPrincipal"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#carouselPrincipal"
+              data-bs-slide-to="0"
+              class="active"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselPrincipal"
+              data-bs-slide-to="1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselPrincipal"
+              data-bs-slide-to="2"
+            ></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                src="assets/img/magen1.jpg"
+                class="d-block w-100"
+                alt="Plantación de Café 1"
+              />
+              <div
+                class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2"
+              >
+                <h5>Plantación de Café</h5>
+                <p>Cultivo Amazónico de Café Verde</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img
+                src="assets/img/imagen2.jpg"
+                class="d-block w-100"
+                alt="Plantación de Café 2"
+              />
+              <div
+                class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2"
+              >
+                <h5>Frutos de Café</h5>
+                <p>Granos en Proceso de Maduración</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img
+                src="assets/img/imagen3.jpg"
+                class="d-block w-100"
+                alt="Plantación de Café 3"
+              />
+              <div
+                class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2"
+              >
+                <h5>Agricultura Sustentable</h5>
+                <p>Café Ecuatoriano de Calidad</p>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselPrincipal"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselPrincipal"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Tabla de Productos -->
+      <section id="productos" class="mb-5">
+        <h2 class="text-center mb-4">Nuestros Cafés Especiales</h2>
+        <div class="table-responsive">
+          <table class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Categoría</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Café Arábica Premium</td>
+                <td>Grano Entero</td>
+                <td>$12.99</td>
+                <td>50</td>
+                <td><span class="badge bg-success">Disponible</span></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Café Robusta Amazónico</td>
+                <td>Grano Entero</td>
+                <td>$10.99</td>
+                <td>35</td>
+                <td><span class="badge bg-success">Disponible</span></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Blend Especial Fausto's</td>
+                <td>Molido</td>
+                <td>$14.99</td>
+                <td>28</td>
+                <td><span class="badge bg-success">Disponible</span></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Café Orgánico de Altura</td>
+                <td>Grano Entero</td>
+                <td>$16.99</td>
+                <td>8</td>
+                <td>
+                  <span class="badge bg-warning text-dark">Pocas Unidades</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Espresso Intenso</td>
+                <td>Molido Fino</td>
+                <td>$13.99</td>
+                <td>0</td>
+                <td><span class="badge bg-danger">Agotado</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Formulario de Contacto -->
+      <section id="contacto" class="mb-5">
+        <h2 class="text-center mb-4">Formulario de Contacto</h2>
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+              <div class="card-body">
+                <form id="formularioContacto" novalidate>
+                  <div class="mb-3">
+                    <label for="nombre" class="form-label"
+                      >Nombre Completo *</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nombre"
+                      placeholder="Ingresa tu nombre"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Por favor, ingresa tu nombre.
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="email" class="form-label"
+                      >Correo Electrónico *</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      placeholder="ejemplo@correo.com"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Por favor, ingresa un correo electrónico válido.
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="mensaje" class="form-label">Mensaje *</label>
+                    <textarea
+                      class="form-control"
+                      id="mensaje"
+                      rows="5"
+                      placeholder="Escribe tu mensaje aquí"
+                      required
+                    ></textarea>
+                    <div class="invalid-feedback">
+                      Por favor, escribe un mensaje.
+                    </div>
+                  </div>
+                  <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                      <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                    </button>
+                  </div>
+                </form>
+                <div
+                  id="mensajeExito"
+                  class="alert alert-success mt-3 d-none"
+                  role="alert"
+                >
+                  <i class="fas fa-check-circle"></i> ¡Mensaje enviado
+                  exitosamente!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="bg-dark text-white py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <h5><i class="fas fa-coffee"></i> Sobre Nosotros</h5>
+            <p>
+              Fausto's Coffee es una marca de café premium cultivado en la
+              región amazónica del Ecuador. Comprometidos con la calidad y la
+              sustentabilidad.
+            </p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <h5><i class="fas fa-envelope"></i> Contacto</h5>
+            <p>
+              Email: info@faustoscoffee.com<br />
+              Teléfono: +593 987 654 321<br />
+              Dirección: Puyo, Pastaza, Ecuador
+            </p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <h5><i class="fas fa-share-alt"></i> Redes Sociales</h5>
+            <div class="social-icons">
+              <a href="#" class="text-white me-3"
+                ><i class="fab fa-facebook fa-2x"></i
+              ></a>
+              <a href="#" class="text-white me-3"
+                ><i class="fab fa-twitter fa-2x"></i
+              ></a>
+              <a href="#" class="text-white me-3"
+                ><i class="fab fa-instagram fa-2x"></i
+              ></a>
+              <a href="#" class="text-white"
+                ><i class="fab fa-github fa-2x"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <hr class="bg-white" />
+        <div class="text-center">
+          <p class="mb-0">
+            &copy; 2026 Fausto's Coffee. Café Amazónico Premium - Todos los
+            derechos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS y Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript Personalizado -->
+    <script src="script.js"></script>
+  </body>
+</html>
