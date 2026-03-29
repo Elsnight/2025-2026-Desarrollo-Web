@@ -1,27 +1,64 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
+
+PRODUCTOS = [
+    {
+        "slug": "espresso-premium",
+        "nombre": "Espresso Premium",
+        "descripcion": "Tueste intenso con notas de cacao y un final persistente.",
+        "precio": "$8.50",
+    },
+    {
+        "slug": "cafe-de-origen",
+        "nombre": "Cafe de Origen",
+        "descripcion": "Granos seleccionados con aroma floral y acidez equilibrada.",
+        "precio": "$10.00",
+    },
+    {
+        "slug": "blend-de-la-casa",
+        "nombre": "Blend de la Casa",
+        "descripcion": "Mezcla suave para disfrutar en cualquier momento del dia.",
+        "precio": "$7.25",
+    },
+]
 
 
 @app.route("/")
 def home():
-    return """
-    <h1>Faustos Coffee</h1>
-    <p>Bienvenido a la tienda online de cafe artesanal.</p>
-    <p>Explora nuestros productos y descubre sabores unicos.</p>
-    <a href="/producto/espresso-premium">Ver producto destacado</a>
-    """
+    return render_template("index.html", productos=PRODUCTOS)
+
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
+@app.route("/productos")
+def productos():
+    return render_template("productos.html", productos=PRODUCTOS)
 
 
 @app.route("/producto/<nombre>")
 def producto(nombre):
-    nombre_formateado = nombre.replace("-", " ").title()
-    return f"""
-    <h1>Producto: {nombre_formateado}</h1>
-    <p>Este cafe forma parte del catalogo inicial de Faustos Coffee.</p>
-    <p>Ideal para la primera fase del proyecto Flask.</p>
-    <a href="/">Volver al inicio</a>
-    """
+    producto_encontrado = next(
+        (producto for producto in PRODUCTOS if producto["slug"] == nombre),
+        None,
+    )
+
+    if producto_encontrado is None:
+        producto_encontrado = {
+            "slug": nombre,
+            "nombre": nombre.replace("-", " ").title(),
+            "descripcion": "Este producto forma parte del catalogo inicial de Faustos Coffee.",
+            "precio": "Precio por confirmar",
+        }
+
+    return render_template(
+        "productos.html",
+        productos=PRODUCTOS,
+        producto_destacado=producto_encontrado,
+    )
 
 
 if __name__ == "__main__":

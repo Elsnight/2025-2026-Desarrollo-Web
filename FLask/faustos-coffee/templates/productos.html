@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Productos | Faustos Coffee{% endblock %}
+
+{% block content %}
+<section class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 mb-5">
+    <div>
+        <span class="section-label">Catalogo inicial</span>
+        <h1 class="display-6 fw-bold mb-2">Nuestros productos</h1>
+        <p class="text-muted mb-0">
+            Explora el catalogo base de Faustos Coffee y revisa un detalle destacado.
+        </p>
+    </div>
+    <a class="btn btn-coffee" href="{{ url_for('home') }}">Volver al inicio</a>
+</section>
+
+{% if producto_destacado %}
+<section class="card border-0 shadow-sm mb-5">
+    <div class="card-body p-4">
+        <span class="badge rounded-pill text-bg-dark mb-3">Detalle seleccionado</span>
+        <h2 class="h3">{{ producto_destacado.nombre }}</h2>
+        <p class="text-muted mb-2">{{ producto_destacado.descripcion }}</p>
+        <p class="fw-semibold text-coffee mb-0">{{ producto_destacado.precio }}</p>
+    </div>
+</section>
+{% endif %}
+
+<section class="row g-4">
+    {% for producto in productos %}
+    <div class="col-md-6 col-xl-4">
+        <article class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+                <h2 class="h4">{{ producto.nombre }}</h2>
+                <p class="text-muted">{{ producto.descripcion }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="fw-semibold text-coffee">{{ producto.precio }}</span>
+                    <a class="btn btn-outline-dark btn-sm" href="{{ url_for('producto', nombre=producto.slug) }}">
+                        Ver detalle
+                    </a>
+                </div>
+            </div>
+        </article>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Nosotros | Faustos Coffee{% endblock %}
+
+{% block content %}
+<section class="row g-4 align-items-center">
+    <div class="col-lg-6">
+        <span class="section-label">Nuestra historia</span>
+        <h1 class="display-6 fw-bold mb-3">Cafe con identidad y cercania</h1>
+        <p class="text-muted">
+            En Faustos Coffee buscamos ofrecer una experiencia simple, calida y
+            moderna para presentar nuestros productos de cafe artesanal.
+        </p>
+        <p class="text-muted">
+            Esta fase del proyecto utiliza Flask, Jinja2 y Bootstrap para construir
+            una base visual reutilizable que luego seguira creciendo con mas modulos.
+        </p>
+    </div>
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-3">Lo que caracteriza a la tienda</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item px-0">Diseno limpio y facil de defender academicamente.</li>
+                    <li class="list-group-item px-0">Plantillas reutilizables con Jinja2.</li>
+                    <li class="list-group-item px-0">Maquetacion responsiva apoyada en Bootstrap.</li>
+                    <li class="list-group-item px-0">Base lista para integrar CRUD, autenticacion y bases de datos.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

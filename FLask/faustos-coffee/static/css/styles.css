@@ -1,0 +1,43 @@
+body {
+    background-color: #f8f5f0;
+    color: #2f241f;
+}
+
+.bg-coffee {
+    background: linear-gradient(135deg, #3e2c23, #6f4e37);
+}
+
+.hero-section {
+    background: linear-gradient(135deg, rgba(62, 44, 35, 0.95), rgba(111, 78, 55, 0.88));
+}
+
+.btn-coffee {
+    background-color: #6f4e37;
+    border-color: #6f4e37;
+    color: #fff;
+}
+
+.btn-coffee:hover,
+.btn-coffee:focus {
+    background-color: #5d3f2b;
+    border-color: #5d3f2b;
+    color: #fff;
+}
+
+.text-coffee {
+    color: #6f4e37;
+}
+
+.section-label {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    color: #6f4e37;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.card {
+    border-radius: 1rem;
+}
