@@ -40,7 +40,7 @@ def register_admin_routes(app):
             flash(str(error), "danger")
             return redirect(url_for("admin_productos"))
 
-        flash("Producto creado correctamente en SQLite.", "success")
+        flash("Producto creado correctamente en la base de datos.", "success")
         return redirect(url_for("admin_productos"))
 
     @app.post("/admin/productos/<int:producto_id>/editar")

@@ -1,14 +1,16 @@
-from dataclasses import dataclass
 import re
 
+from app.extensions import db
 
-@dataclass(slots=True)
-class Producto:
-    id: int | None = None
-    slug: str = ""
-    nombre: str = ""
-    descripcion: str = ""
-    precio: float = 0.0
+
+class Producto(db.Model):
+    __tablename__ = "productos"
+
+    id = db.Column(db.Integer, primary_key=True)
+    slug = db.Column(db.String(120), nullable=False, unique=True, index=True)
+    nombre = db.Column(db.String(120), nullable=False)
+    descripcion = db.Column(db.Text, nullable=False)
+    precio = db.Column(db.Float, nullable=False)
 
     @property
     def precio_formateado(self) -> str:
@@ -23,13 +25,3 @@ class Producto:
     @classmethod
     def generar_slug(cls, nombre: str) -> str:
         return cls.normalizar_slug(nombre)
-
-    @classmethod
-    def desde_fila(cls, fila) -> "Producto":
-        return cls(
-            id=fila["id"],
-            slug=fila["slug"],
-            nombre=fila["nombre"],
-            descripcion=fila["descripcion"],
-            precio=fila["precio"],
-        )
