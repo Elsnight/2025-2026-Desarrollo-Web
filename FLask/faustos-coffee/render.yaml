@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: faustos-coffee
+    runtime: python
+    rootDir: FLask/faustos-coffee
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn run:app
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_ENGINE
+        value: sqlite

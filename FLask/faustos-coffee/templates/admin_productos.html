@@ -5,17 +5,23 @@
 {% block content %}
 <section class="d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4">
     <div>
-        <span class="section-label">Fase 5</span>
-        <h1 class="display-6 fw-bold mb-2">CRUD inicial de productos</h1>
+        <span class="section-label">Fase 8</span>
+        <h1 class="display-6 fw-bold mb-2">CRUD web completo de productos</h1>
         <p class="text-muted mb-0">
-            La app ahora usa una estructura por capas con app factory, modelos, servicios y formularios para mantener el CRUD organizado.
+            Esta vista protegida concentra el alta, edicion, eliminacion y exportacion del catalogo desde formularios HTML.
         </p>
     </div>
     <div class="d-flex flex-wrap gap-2">
         <a class="btn btn-outline-dark" href="{{ url_for('productos') }}">Ver catalogo</a>
         <a class="btn btn-outline-secondary" href="{{ url_for('archivos_productos') }}">Ver archivos</a>
+        <a class="btn btn-outline-secondary" href="{{ url_for('descargar_reporte_productos') }}">Descargar PDF</a>
         <a class="btn btn-coffee" href="{{ url_for('home') }}">Inicio</a>
     </div>
+</section>
+
+<section class="alert alert-light border shadow-sm mb-4" role="status">
+    <strong>Ruta protegida:</strong>
+    solo usuarios autenticados pueden acceder a este panel para administrar el inventario.
 </section>
 
 <section class="row g-4 mb-4">
@@ -44,6 +50,11 @@
                     <div class="col-md-6">
                         <label class="form-label" for="precio">Precio</label>
                         <input class="form-control" id="precio" name="precio" min="0.01" step="0.01" required type="number">
+                    </div>
+                    <div class="col-12">
+                        <p class="small text-muted mb-0">
+                            Si dejas el slug vacio, el sistema lo genera automaticamente a partir del nombre.
+                        </p>
                     </div>
                     <div class="col-12">
                         <button class="btn btn-coffee" type="submit">Guardar en SQLite</button>
@@ -95,7 +106,7 @@
                         Selecciona un producto de la tabla para cargar sus datos y editarlo.
                     </p>
                     <p class="small text-muted mb-0">
-                        La edicion conserva separadas la logica del modelo, la validacion del formulario y la persistencia realizada por Inventario.
+                        La edicion mantiene separadas la validacion del formulario, la logica del catalogo y la persistencia en la base de datos.
                     </p>
                 </div>
                 {% endif %}
@@ -116,6 +127,9 @@
                 <form method="post" action="{{ url_for('exportar_archivos_productos') }}">
                     <button class="btn btn-sm btn-outline-dark" type="submit">Exportar a TXT, JSON y CSV</button>
                 </form>
+                <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('descargar_reporte_productos') }}">
+                    Generar reporte PDF
+                </a>
             </div>
         </div>
 
@@ -150,7 +164,13 @@
                                     Ver
                                 </a>
                                 <form method="post" action="{{ url_for('eliminar_producto', producto_id=producto.id) }}">
-                                    <button class="btn btn-sm btn-outline-danger" type="submit">Eliminar</button>
+                                    <button
+                                        class="btn btn-sm btn-outline-danger"
+                                        onclick="return confirm('Se eliminara este producto del inventario. Deseas continuar?')"
+                                        type="submit"
+                                    >
+                                        Eliminar
+                                    </button>
                                 </form>
                             </div>
                         </td>

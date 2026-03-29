@@ -15,6 +15,7 @@
         <form method="post" action="{{ url_for('exportar_archivos_productos') }}">
             <button class="btn btn-outline-dark" type="submit">Regenerar archivos</button>
         </form>
+        <a class="btn btn-outline-secondary" href="{{ url_for('descargar_reporte_productos') }}">Descargar PDF</a>
         <a class="btn btn-outline-secondary" href="{{ url_for('admin_productos') }}">Volver al CRUD</a>
         <a class="btn btn-coffee" href="{{ url_for('productos') }}">Ver catalogo</a>
     </div>
