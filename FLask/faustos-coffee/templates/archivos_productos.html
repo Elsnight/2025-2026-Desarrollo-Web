@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block title %}Archivos Planos | Faustos Coffee{% endblock %}
+
+{% block content %}
+<section class="d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4">
+    <div>
+        <span class="section-label">Fase 4</span>
+        <h1 class="display-6 fw-bold mb-2">Persistencia en archivos planos</h1>
+        <p class="text-muted mb-0">
+            Esta vista muestra la misma informacion del inventario exportada desde SQLite hacia TXT, JSON y CSV.
+        </p>
+    </div>
+    <div class="d-flex flex-wrap gap-2">
+        <form method="post" action="{{ url_for('exportar_archivos_productos') }}">
+            <button class="btn btn-outline-dark" type="submit">Regenerar archivos</button>
+        </form>
+        <a class="btn btn-outline-secondary" href="{{ url_for('admin_productos') }}">Volver al CRUD</a>
+        <a class="btn btn-coffee" href="{{ url_for('productos') }}">Ver catalogo</a>
+    </div>
+</section>
+
+<section class="row g-4 mb-4">
+    <div class="col-md-4">
+        <article class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <span class="small text-uppercase text-muted d-block mb-2">TXT</span>
+                <h2 class="h5">{{ archivos.txt.ruta }}</h2>
+                <p class="text-muted mb-0">
+                    Lectura lineal, util para demostrar persistencia basica en texto plano.
+                </p>
+            </div>
+        </article>
+    </div>
+    <div class="col-md-4">
+        <article class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <span class="small text-uppercase text-muted d-block mb-2">JSON</span>
+                <h2 class="h5">{{ archivos.json.ruta }}</h2>
+                <p class="text-muted mb-0">
+                    Estructura legible para interoperar con otras aplicaciones o APIs.
+                </p>
+            </div>
+        </article>
+    </div>
+    <div class="col-md-4">
+        <article class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <span class="small text-uppercase text-muted d-block mb-2">CSV</span>
+                <h2 class="h5">{{ archivos.csv.ruta }}</h2>
+                <p class="text-muted mb-0">
+                    Formato tabular pensado para hojas de calculo y revisiones academicas.
+                </p>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="card border-0 shadow-sm mb-4">
+    <div class="card-body p-4">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-3">
+            <div>
+                <h2 class="h4 mb-1">Contenido TXT</h2>
+                <p class="text-muted mb-0">Vista directa del archivo exportado.</p>
+            </div>
+            <span class="badge rounded-pill text-bg-dark">{{ productos|length }} producto(s)</span>
+        </div>
+        <pre class="file-preview mb-0">{{ archivos.txt.contenido }}</pre>
+    </div>
+</section>
+
+<section class="card border-0 shadow-sm mb-4">
+    <div class="card-body p-4">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-3">
+            <div>
+                <h2 class="h4 mb-1">Contenido JSON</h2>
+                <p class="text-muted mb-0">Representacion estructurada del catalogo exportado.</p>
+            </div>
+            <span class="badge rounded-pill text-bg-secondary">{{ archivos.json.registros|length }} registro(s)</span>
+        </div>
+        <pre class="file-preview mb-0">{{ archivos.json.contenido }}</pre>
+    </div>
+</section>
+
+<section class="card border-0 shadow-sm">
+    <div class="card-body p-4">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-3">
+            <div>
+                <h2 class="h4 mb-1">Contenido CSV</h2>
+                <p class="text-muted mb-0">Los datos del archivo se leen nuevamente y se muestran en HTML.</p>
+            </div>
+            <span class="badge rounded-pill text-bg-secondary">{{ archivos.csv.registros|length }} fila(s)</span>
+        </div>
+
+        {% if archivos.csv.registros %}
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Slug</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in archivos.csv.registros %}
+                    <tr>
+                        <td>{{ producto.id }}</td>
+                        <td><code>{{ producto.slug }}</code></td>
+                        <td>{{ producto.nombre }}</td>
+                        <td>{{ producto.descripcion }}</td>
+                        <td class="text-coffee fw-semibold">${{ producto.precio }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="text-muted mb-0">
+            Aun no hay filas para mostrar porque el archivo CSV no contiene productos.
+        </p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

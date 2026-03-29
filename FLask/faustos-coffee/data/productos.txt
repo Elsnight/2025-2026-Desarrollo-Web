@@ -1,0 +1,22 @@
+Faustos Coffee - Productos exportados
+
+Producto #1
+ID: 1
+Slug: espresso-premium
+Nombre: Espresso Premium
+Descripcion: Tueste intenso con notas de cacao y un final persistente.
+Precio: 8.50
+----------------------------------------
+Producto #2
+ID: 2
+Slug: cafe-de-origen
+Nombre: Cafe de Origen
+Descripcion: Granos seleccionados con aroma floral y acidez equilibrada.
+Precio: 10.00
+----------------------------------------
+Producto #3
+ID: 3
+Slug: blend-de-la-casa
+Nombre: Blend de la Casa
+Descripcion: Mezcla suave para disfrutar en cualquier momento del dia.
+Precio: 7.25

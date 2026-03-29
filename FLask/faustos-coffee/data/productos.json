@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "slug": "espresso-premium",
+        "nombre": "Espresso Premium",
+        "descripcion": "Tueste intenso con notas de cacao y un final persistente.",
+        "precio": "8.50"
+    },
+    {
+        "id": 2,
+        "slug": "cafe-de-origen",
+        "nombre": "Cafe de Origen",
+        "descripcion": "Granos seleccionados con aroma floral y acidez equilibrada.",
+        "precio": "10.00"
+    },
+    {
+        "id": 3,
+        "slug": "blend-de-la-casa",
+        "nombre": "Blend de la Casa",
+        "descripcion": "Mezcla suave para disfrutar en cualquier momento del dia.",
+        "precio": "7.25"
+    }
+]
