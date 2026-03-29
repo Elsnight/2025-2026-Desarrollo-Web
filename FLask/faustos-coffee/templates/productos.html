@@ -11,7 +11,10 @@
             Explora el catalogo base de Faustos Coffee y revisa un detalle destacado.
         </p>
     </div>
-    <a class="btn btn-coffee" href="{{ url_for('home') }}">Volver al inicio</a>
+    <div class="d-flex flex-wrap gap-2">
+        <a class="btn btn-outline-dark" href="{{ url_for('admin_productos') }}">Abrir CRUD</a>
+        <a class="btn btn-coffee" href="{{ url_for('home') }}">Volver al inicio</a>
+    </div>
 </section>
 
 {% if producto_destacado %}
@@ -20,12 +23,13 @@
         <span class="badge rounded-pill text-bg-dark mb-3">Detalle seleccionado</span>
         <h2 class="h3">{{ producto_destacado.nombre }}</h2>
         <p class="text-muted mb-2">{{ producto_destacado.descripcion }}</p>
-        <p class="fw-semibold text-coffee mb-0">{{ producto_destacado.precio }}</p>
+        <p class="fw-semibold text-coffee mb-0">{{ producto_destacado.precio_formateado }}</p>
     </div>
 </section>
 {% endif %}
 
 <section class="row g-4">
+    {% if productos %}
     {% for producto in productos %}
     <div class="col-md-6 col-xl-4">
         <article class="card h-100 border-0 shadow-sm">
@@ -33,8 +37,8 @@
                 <h2 class="h4">{{ producto.nombre }}</h2>
                 <p class="text-muted">{{ producto.descripcion }}</p>
                 <div class="d-flex justify-content-between align-items-center">
-                    <span class="fw-semibold text-coffee">{{ producto.precio }}</span>
-                    <a class="btn btn-outline-dark btn-sm" href="{{ url_for('producto', nombre=producto.slug) }}">
+                    <span class="fw-semibold text-coffee">{{ producto.precio_formateado }}</span>
+                    <a class="btn btn-outline-dark btn-sm" href="{{ url_for('producto', slug=producto.slug) }}">
                         Ver detalle
                     </a>
                 </div>
@@ -42,5 +46,18 @@
         </article>
     </div>
     {% endfor %}
+    {% else %}
+    <div class="col-12">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-2">Todavia no hay productos</h2>
+                <p class="text-muted mb-3">
+                    El listado ahora se alimenta desde SQLite. Puedes registrar productos nuevos desde el CRUD academico.
+                </p>
+                <a class="btn btn-coffee" href="{{ url_for('admin_productos') }}">Crear producto</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
 </section>
 {% endblock %}

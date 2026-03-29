@@ -21,11 +21,17 @@
             <div class="card border-0 shadow-lg">
                 <div class="card-body p-4">
                     <h2 class="h4 mb-3 text-dark">Producto destacado</h2>
-                    <p class="text-muted mb-2">{{ productos[0].nombre }}</p>
-                    <p class="mb-3 text-dark">{{ productos[0].descripcion }}</p>
-                    <a class="btn btn-coffee" href="{{ url_for('producto', nombre=productos[0].slug) }}">
+                    {% if producto_destacado %}
+                    <p class="text-muted mb-2">{{ producto_destacado.nombre }}</p>
+                    <p class="mb-3 text-dark">{{ producto_destacado.descripcion }}</p>
+                    <a class="btn btn-coffee" href="{{ url_for('producto', slug=producto_destacado.slug) }}">
                         Ver detalle
                     </a>
+                    {% else %}
+                    <p class="text-muted mb-0">
+                        Aun no hay productos guardados en SQLite. Usa la seccion CRUD para registrar el primero.
+                    </p>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -33,6 +39,7 @@
 </section>
 
 <section class="row g-4">
+    {% if productos %}
     {% for producto in productos %}
     <div class="col-md-6 col-lg-4">
         <article class="card h-100 shadow-sm border-0">
@@ -41,8 +48,8 @@
                 <h2 class="h4">{{ producto.nombre }}</h2>
                 <p class="text-muted flex-grow-1">{{ producto.descripcion }}</p>
                 <div class="d-flex justify-content-between align-items-center">
-                    <strong class="text-coffee">{{ producto.precio }}</strong>
-                    <a class="btn btn-sm btn-outline-dark" href="{{ url_for('producto', nombre=producto.slug) }}">
+                    <strong class="text-coffee">{{ producto.precio_formateado }}</strong>
+                    <a class="btn btn-sm btn-outline-dark" href="{{ url_for('producto', slug=producto.slug) }}">
                         Ver mas
                     </a>
                 </div>
@@ -50,5 +57,18 @@
         </article>
     </div>
     {% endfor %}
+    {% else %}
+    <div class="col-12">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-2">Inventario vacio</h2>
+                <p class="text-muted mb-3">
+                    El catalogo ahora se carga desde SQLite. Puedes empezar creando productos desde el CRUD inicial.
+                </p>
+                <a class="btn btn-coffee" href="{{ url_for('admin_productos') }}">Ir al CRUD</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
 </section>
 {% endblock %}

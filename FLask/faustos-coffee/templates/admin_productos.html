@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{% block title %}CRUD de Productos | Faustos Coffee{% endblock %}
+
+{% block content %}
+<section class="d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4">
+    <div>
+        <span class="section-label">Fase 3</span>
+        <h1 class="display-6 fw-bold mb-2">CRUD inicial de productos</h1>
+        <p class="text-muted mb-0">
+            Producto representa el objeto en Python e Inventario administra la persistencia real en SQLite.
+        </p>
+    </div>
+    <div class="d-flex flex-wrap gap-2">
+        <a class="btn btn-outline-dark" href="{{ url_for('productos') }}">Ver catalogo</a>
+        <a class="btn btn-coffee" href="{{ url_for('home') }}">Inicio</a>
+    </div>
+</section>
+
+<section class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-3">Crear producto</h2>
+                <form method="post" action="{{ url_for('crear_producto') }}" class="row g-3">
+                    <div class="col-12">
+                        <label class="form-label" for="nombre">Nombre</label>
+                        <input class="form-control" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label" for="slug">Slug</label>
+                        <input
+                            class="form-control"
+                            id="slug"
+                            name="slug"
+                            placeholder="Se genera automaticamente si lo dejas vacio"
+                        >
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label" for="descripcion">Descripcion</label>
+                        <textarea class="form-control" id="descripcion" name="descripcion" rows="4" required></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="precio">Precio</label>
+                        <input class="form-control" id="precio" name="precio" min="0.01" step="0.01" required type="number">
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-coffee" type="submit">Guardar en SQLite</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-3">Editar producto</h2>
+                {% if producto_editar %}
+                <form method="post" action="{{ url_for('editar_producto', producto_id=producto_editar.id) }}" class="row g-3">
+                    <div class="col-12">
+                        <label class="form-label" for="editar-nombre">Nombre</label>
+                        <input class="form-control" id="editar-nombre" name="nombre" required value="{{ producto_editar.nombre }}">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label" for="editar-slug">Slug</label>
+                        <input class="form-control" id="editar-slug" name="slug" required value="{{ producto_editar.slug }}">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label" for="editar-descripcion">Descripcion</label>
+                        <textarea class="form-control" id="editar-descripcion" name="descripcion" rows="4" required>{{ producto_editar.descripcion }}</textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="editar-precio">Precio</label>
+                        <input
+                            class="form-control"
+                            id="editar-precio"
+                            name="precio"
+                            min="0.01"
+                            step="0.01"
+                            required
+                            type="number"
+                            value="{{ '%.2f'|format(producto_editar.precio) }}"
+                        >
+                    </div>
+                    <div class="col-12 d-flex flex-wrap gap-2">
+                        <button class="btn btn-coffee" type="submit">Actualizar producto</button>
+                        <a class="btn btn-outline-secondary" href="{{ url_for('admin_productos') }}">Cancelar</a>
+                    </div>
+                </form>
+                {% else %}
+                <div class="empty-state">
+                    <p class="text-muted mb-3">
+                        Selecciona un producto de la tabla para cargar sus datos y editarlo.
+                    </p>
+                    <p class="small text-muted mb-0">
+                        Esto ayuda a diferenciar la logica del objeto Producto de la persistencia realizada por Inventario.
+                    </p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="card border-0 shadow-sm">
+    <div class="card-body p-4">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-3">
+            <div>
+                <h2 class="h4 mb-1">Inventario actual</h2>
+                <p class="text-muted mb-0">Los registros de esta tabla vienen directamente de SQLite.</p>
+            </div>
+            <span class="badge rounded-pill text-bg-dark">{{ productos|length }} producto(s)</span>
+        </div>
+
+        {% if productos %}
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Slug</th>
+                        <th>Precio</th>
+                        <th class="text-end">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in productos %}
+                    <tr>
+                        <td>{{ producto.id }}</td>
+                        <td>
+                            <strong>{{ producto.nombre }}</strong>
+                            <div class="small text-muted">{{ producto.descripcion }}</div>
+                        </td>
+                        <td><code>{{ producto.slug }}</code></td>
+                        <td class="text-coffee fw-semibold">{{ producto.precio_formateado }}</td>
+                        <td class="text-end">
+                            <div class="d-flex justify-content-end flex-wrap gap-2">
+                                <a class="btn btn-sm btn-outline-dark" href="{{ url_for('admin_productos', editar=producto.id) }}">
+                                    Editar
+                                </a>
+                                <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('producto', slug=producto.slug) }}">
+                                    Ver
+                                </a>
+                                <form method="post" action="{{ url_for('eliminar_producto', producto_id=producto.id) }}">
+                                    <button class="btn btn-sm btn-outline-danger" type="submit">Eliminar</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="text-muted mb-0">
+            No hay productos cargados. Usa el formulario superior para crear el primero.
+        </p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
